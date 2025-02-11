@@ -7,14 +7,11 @@ import java.util.Scanner;
 public class Paises {
     public static void main(String[] args) {
         LinkedList<String> lugares = new LinkedList<>();
-
         lugares.add("Roma");
         lugares.add("París");
-        lugares.add("Amsterdam");
+        lugares.addFirst("Amsterdam");
         lugares.add("Toronto");
         lugares.add("Miami");
-        boolean anyadirenorden=addInOrder(lugares,"España");
-        System.out.println(anyadirenorden);
         visitarLugar(lugares);
         printList(lugares);
     }
