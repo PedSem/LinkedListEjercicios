@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Paises {
     public static void main(String[] args) {
         LinkedList<String> lugares = new LinkedList<>();
+
         lugares.add("Roma");
         lugares.add("París");
         lugares.add("Amsterdam");
