@@ -4,18 +4,25 @@ import java.util.*;
 
 public class MainCanciones {
     private static LinkedList<Cancion>canciones=new LinkedList<>();
-    private static ArrayList<Album>albumes=new ArrayList<>();
-
+    private static Album album=new Album("Hola","P");
 
     public static void main(String[] args) {
-        Album album1=new Album("Monster","Skillet");
-        Album album2=new Album("Bring me to life","Evanescence");
-        albumes.add(0,album1);
-        albumes.add(1,album2);
-        boolean anyadir1=album1.addSong("Monster",3);
-        boolean anyadir2=album1.addSong("Bring me to life",4);
-        boolean anyadirplaylistpista1=album1.addToPlayList(0,canciones);
-        boolean anyadirplaylistpista2=album2.addToPLayList("Bring me to life",canciones);
+        ArrayList<Album>albumes=new ArrayList<>();
+        Cancion cancion1=new Cancion("Monster",3);
+       Cancion cancion2=new Cancion("Bring me to life",4);
+       Cancion cancion3=new Cancion("Monster",3);
+        canciones.add(cancion1);
+        canciones.add(cancion2);
+        canciones.add(cancion3);
+        albumes.add(0,album);
+        albumes.add(1,album);
+        albumes.add(2,album);
+        boolean anyadir1=album.addSong("Monster",3);
+        boolean anyadir2=album.addSong("Bring me to life",4);
+        boolean anyadir3=album.addSong("Monster",3);
+        boolean anyadirplaylistpista1=album.addToPlayList(1,canciones);
+       boolean anyadirplaylistpista2=album.addToPLayList("Bring me to life",canciones);
+       boolean anyadirplaylistpista3= album.addToPlayList(2,canciones);
         play(canciones);
 
 
@@ -43,24 +50,12 @@ public class MainCanciones {
 
         }
         boolean haciaAdelante=true;
-        int opcion=0;
         while (continuar){
-            try{
-                opcion= scanner.nextInt();
+                int opcion= scanner.nextInt();
                 scanner.nextLine();
-                if(opcion<0 || opcion>6){
-                    System.out.println("Introduce una opcion valida");
-                    continuar=false;
-                }
-
-            }catch (InputMismatchException e){
-                System.out.println("Error.Solo se permite numeros");
-                scanner.nextLine();
-
-            }
             switch (opcion){
                 case 0:
-                    System.out.println("Se acabo las canciones");
+                    System.out.println("Se acabaron las canciones");
                     continuar=false;
                     break;
                 case 1:
@@ -72,7 +67,7 @@ public class MainCanciones {
 
                     }
                     if(cancionListIterator.hasNext()){
-                        System.out.println("Cancion " + cancionListIterator);
+                        System.out.println("Cancion " + cancionListIterator.next());
 
                     }else{
                         System.out.println("No hay mas canciones");
@@ -86,7 +81,7 @@ public class MainCanciones {
                         haciaAdelante=false;
                     }
                     if(cancionListIterator.hasPrevious()){
-                        System.out.println("Cancion " + cancionListIterator);
+                        System.out.println("Cancion " + cancionListIterator.previous());
                     }else{
                         System.out.println("Primer cancion");
                         haciaAdelante=true;
