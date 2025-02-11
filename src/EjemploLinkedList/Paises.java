@@ -103,7 +103,4 @@ public class Paises {
                 "2 - para ir a la ciudad anterior\n" +
                 "3 - imprimir el menú");
     }
-
-
-
 }
