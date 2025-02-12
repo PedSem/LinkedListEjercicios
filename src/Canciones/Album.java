@@ -14,13 +14,12 @@ public class Album {
         this.canciones=new ArrayList<>();
     }
     private Cancion findSong(String titulo){
-        for(int i=0;i<this.canciones.size();i++){
             for(Cancion cancion:canciones){
-                if(this.canciones.get(i).getTitulo().equals(titulo)){
+                if(cancion.getTitulo().equals(titulo)){
                     return cancion;
                 }
             }
-        }
+
         return null;
     }
     public boolean addSong(String titulo,double duracion){
@@ -33,11 +32,13 @@ public class Album {
 
     }
     public boolean addToPlayList(int numeropista, LinkedList<Cancion>cancions){
-        for(Cancion cancion1:canciones){
-            cancions.add(numeropista,cancion1);
+        int index=numeropista-1;
+        if(index>=0 && index<canciones.size()){
+            cancions.add(canciones.get(index));
             return true;
+        }else{
+            return false;
         }
-        return false;
 
     }
     public boolean addToPLayList(String titulo,LinkedList<Cancion>cancions){

@@ -4,17 +4,26 @@ import java.util.*;
 
 public class MainCanciones {
     private static LinkedList<Cancion>canciones=new LinkedList<>();
-    private static Album album=new Album("Hola","P");
     public static ArrayList<Album>albumes=new ArrayList<>();
 
 
     public static void main(String[] args) {
-       Album album1=new Album("SKillet","John Cooper");
+       Album album1=new Album("Skillet","John Cooper");
        Album album2=new Album("Evanescence","Amy Lee");
        album1.addSong("Monster",3);
+       album1.addSong("Hero",3);
+       album1.addSong("Salvation",3);
+       albumes.add(album1);
        album2.addSong("Bring me to life",4);
-       album1.addToPlayList(0,canciones);
+       album2.addSong("Going Under",4);
+       album2.addSong("My Immortal",4);
+       albumes.add(album2);
+       album1.addToPlayList(1,canciones);
+       album1.addToPLayList("Hero",canciones);
+       album1.addToPLayList("Salvation",canciones);
        album2.addToPLayList("Bring me to life",canciones);
+       album2.addToPLayList("Going Under",canciones);
+       album2.addToPlayList(3,canciones);
         play(canciones);
     }
     public static void printList(LinkedList<Cancion>cancions){
@@ -78,10 +87,13 @@ public class MainCanciones {
                     }
                     break;
                 case 3:
-                    if(cancionListIterator.hasNext() && cancionListIterator.hasPrevious()){
-                        System.out.println("Cancion " + cancionListIterator);
-                    }else{
-                        System.out.println("No hay ninguna cancion");
+                    if(haciaAdelante){
+                        if(cancionListIterator.hasPrevious()){
+                            System.out.println(cancionListIterator.previous());
+                        }else{
+                            System.out.println(cancionListIterator.next());
+                        }
+
                     }
                     break;
                 case 4:
