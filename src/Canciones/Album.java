@@ -14,53 +14,35 @@ public class Album {
         this.canciones=new ArrayList<>();
     }
     private Cancion findSong(String titulo){
-        for(Cancion cancion:canciones){
-            if(!cancion.getTitulo().equals(titulo)){
-                return cancion;
+        for(int i=0;i<this.canciones.size();i++){
+            for(Cancion cancion:canciones){
+                if(this.canciones.get(i).getTitulo().equals(titulo)){
+                    return cancion;
+                }
             }
         }
         return null;
     }
     public boolean addSong(String titulo,double duracion){
         Cancion cancion=findSong(titulo);
-        for(Cancion cancion1:canciones){
-
-            if(!cancion1.equals(cancion)){
-                return false;
-            }else{
-                canciones.add(new Cancion(titulo,duracion));
-                return true;
-            }
+        if(cancion==null){
+            this.canciones.add(new Cancion(titulo,duracion));
+            return true;
         }
-        return true;
+       return false;
 
     }
     public boolean addToPlayList(int numeropista, LinkedList<Cancion>cancions){
-        numeropista=this.canciones.indexOf(cancions);
-        for(Cancion cancion1:cancions){
-            canciones.add(numeropista,cancion1);
+        for(Cancion cancion1:canciones){
+            cancions.add(numeropista,cancion1);
             return true;
         }
         return false;
-        /*
-        for(Cancion cancion:canciones){
-            cancions.add(numeropista,cancion);
-            return true;
-        }
-        return false;
-
-         */
 
     }
     public boolean addToPLayList(String titulo,LinkedList<Cancion>cancions){
-        Cancion cancion1=findSong(titulo);
-        for(Cancion cancion:canciones){
-            if(cancion.equals(cancion1)){
-                cancions.add(cancion);
-                return true;
-            }
-        }
-        return false;
+        Cancion cancion=findSong(titulo);
+        return true;
 
     }
 }
