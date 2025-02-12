@@ -14,24 +14,6 @@ public class MainCanciones {
        album2.addSong("Bring me to life",4);
        album1.addToPlayList(0,canciones);
        album2.addToPLayList("Bring me to life",canciones);
-
-
-
-
-       albumes.add(0,album);
-        albumes.add(1,album);
-        albumes.add(2,album);
-        boolean anyadir1=album.addSong("Monster",3);
-        boolean anyadir2=album.addSong("Bring me to life",4);
-        boolean anyadir3=album.addSong("Monster",3);
-        System.out.println(anyadir3);
-        //System.out.println(anyadir1);
-        System.out.println(anyadir2);
-        boolean anyadirplaylistpista1=album.addToPlayList(1,canciones);
-           System.out.println(anyadirplaylistpista1);
-     // boolean anyadirplaylistpista2=album.addToPLayList("Bring me to life",canciones);
-     //   System.out.println(anyadirplaylistpista2);
-       // boolean anyadirplaylistpista3= album.addToPlayList(1,canciones);
         play(canciones);
     }
     public static void printList(LinkedList<Cancion>cancions){
