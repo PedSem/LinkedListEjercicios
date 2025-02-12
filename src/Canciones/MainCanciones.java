@@ -24,8 +24,6 @@ public class MainCanciones {
        boolean anyadirplaylistpista2=album.addToPLayList("Bring me to life",canciones);
        boolean anyadirplaylistpista3= album.addToPlayList(2,canciones);
         play(canciones);
-
-
     }
     public static void printList(LinkedList<Cancion>cancions){
         Iterator<Cancion>it=cancions.iterator();

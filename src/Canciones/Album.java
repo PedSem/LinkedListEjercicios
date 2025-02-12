@@ -32,11 +32,11 @@ public class Album {
                 return true;
             }
         }
-        canciones.add(new Cancion(titulo,duracion));
         return true;
 
     }
     public boolean addToPlayList(int numeropista, LinkedList<Cancion>cancions){
+        numeropista=this.canciones.indexOf(cancions);
         for(Cancion cancion1:cancions){
             canciones.add(numeropista,cancion1);
             return true;
