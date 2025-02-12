@@ -7,6 +7,7 @@ public class MainCanciones {
     private static Album album=new Album("Hola","P");
     public static ArrayList<Album>albumes=new ArrayList<>();
 
+
     public static void main(String[] args) {
        Album album1=new Album("SKillet","John Cooper");
        Album album2=new Album("Evanescence","Amy Lee");
