@@ -8,19 +8,13 @@ public class MainCanciones {
     public static ArrayList<Album>albumes=new ArrayList<>();
 
     public static void main(String[] args) {
-
-        Cancion cancion1=new Cancion("Monster",3);
-       Cancion cancion2=new Cancion("Bring me to life",4);
-       Cancion cancion3=new Cancion("Monster",3);
        Album album1=new Album("SKillet","John Cooper");
        Album album2=new Album("Evanescence","Amy Lee");
        album1.addSong("Monster",3);
        album2.addSong("Bring me to life",4);
        album1.addToPlayList(0,canciones);
        album2.addToPLayList("Bring me to life",canciones);
-        canciones.add(cancion1);
-        canciones.add(cancion2);
-        canciones.add(cancion3);
+
 
 
 

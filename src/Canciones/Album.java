@@ -42,7 +42,13 @@ public class Album {
     }
     public boolean addToPLayList(String titulo,LinkedList<Cancion>cancions){
         Cancion cancion=findSong(titulo);
-        return true;
+        if(cancion!=null){
+                cancions.add(cancion);
+                return true;
+
+        }else{
+            return false;
+        }
 
     }
 }
