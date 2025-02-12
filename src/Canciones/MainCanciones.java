@@ -87,13 +87,12 @@ public class MainCanciones {
                     }
                     break;
                 case 3:
-                    if(haciaAdelante){
-                        if(cancionListIterator.hasPrevious()){
-                            System.out.println(cancionListIterator.previous());
-                        }else{
-                            System.out.println(cancionListIterator.next());
-                        }
-
+                    if(haciaAdelante && cancionListIterator.hasPrevious()){
+                        System.out.println("Reproduciendo " + cancionListIterator.previous());
+                        haciaAdelante=false;
+                    }else if(!haciaAdelante &&cancionListIterator.hasNext()){
+                        System.out.println("Reproduciendo " + cancionListIterator.next());
+                        haciaAdelante=true;
                     }
                     break;
                 case 4:
