@@ -37,6 +37,12 @@ public class MainCanciones {
         System.out.println("-----");
 
     }
+    public static void printListAlbum(ArrayList<Album>albumes){
+        for(Album album:albumes){
+            System.out.println(album);
+        }
+
+    }
     public static void play(LinkedList<Cancion>cancions){
         Scanner scanner=new Scanner(System.in);
         boolean continuar=true;
@@ -104,15 +110,22 @@ public class MainCanciones {
                     imprimirmenu();
                     break;
                 case 6:
-                    if(!haciaAdelante && cancionListIterator.hasNext()){
+                    if(cancionListIterator.hasNext() || cancionListIterator.hasPrevious()){
                         cancionListIterator.remove();
-                        System.out.println("Reproduciendo " + cancionListIterator.next());
-                        haciaAdelante=true;
-                    }else{
-                        System.out.println("Reproduciendo " + cancionListIterator.previous());
-                        haciaAdelante=false;
+                        if(cancionListIterator.hasNext()){
+                            System.out.println("Reproduciendo " + cancionListIterator.next());
+
+                        }else if(cancionListIterator.hasPrevious()){
+                            System.out.println("Reproduciendo " + cancionListIterator.previous());
+
+
+                        }else{
+                            System.out.println("El album esta vacio");
+                        }
                     }
                     break;
+                case 7:
+                    printListAlbum(albumes);
             }
         }
     }
@@ -123,6 +136,8 @@ public class MainCanciones {
         System.out.println("3-Repetir la cancion actual");
         System.out.println("4-Imprimir la lista de canciones en la playlist");
         System.out.println("5-Volver a imprimir el menu");
+        System.out.println("6-Eliminar la cancion del album");
+        System.out.println("7-Imprimir Album con las canciones");
     }
 
 }
