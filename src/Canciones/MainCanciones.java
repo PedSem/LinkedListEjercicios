@@ -14,10 +14,12 @@ public class MainCanciones {
        album1.addSong("Hero",3);
        album1.addSong("Salvation",3);
        albumes.add(album1);
+
        album2.addSong("Bring me to life",4);
        album2.addSong("Going Under",4);
        album2.addSong("My Immortal",4);
        albumes.add(album2);
+
        album1.addToPlayList(1,canciones);
        album1.addToPLayList("Hero",canciones);
        album1.addToPLayList("Salvation",canciones);
@@ -90,7 +92,7 @@ public class MainCanciones {
                     if(haciaAdelante && cancionListIterator.hasPrevious()){
                         System.out.println("Reproduciendo " + cancionListIterator.previous());
                         haciaAdelante=false;
-                    }else if(!haciaAdelante &&cancionListIterator.hasNext()){
+                    }else if(!haciaAdelante && cancionListIterator.hasNext()){
                         System.out.println("Reproduciendo " + cancionListIterator.next());
                         haciaAdelante=true;
                     }
@@ -101,14 +103,18 @@ public class MainCanciones {
                 case 5:
                     imprimirmenu();
                     break;
-
+                case 6:
+                    if(!haciaAdelante && cancionListIterator.hasNext()){
+                        cancionListIterator.remove();
+                        System.out.println("Reproduciendo " + cancionListIterator.next());
+                        haciaAdelante=true;
+                    }else{
+                        System.out.println("Reproduciendo " + cancionListIterator.previous());
+                        haciaAdelante=false;
+                    }
+                    break;
             }
-
-
         }
-
-
-
     }
     public static void imprimirmenu(){
         System.out.println("0-Salir de la lista de reproduccion");
