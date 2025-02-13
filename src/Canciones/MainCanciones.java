@@ -43,6 +43,18 @@ public class MainCanciones {
         }
 
     }
+    public static void addInOrder(LinkedList<Cancion>canciones){
+        LinkedList<Cancion>linkedListOrdenado=new LinkedList<>(canciones);
+        Collections.sort(linkedListOrdenado);
+        for(Cancion cancion:linkedListOrdenado){
+            System.out.println(cancion);
+        }
+
+
+
+
+
+    }
     public static void play(LinkedList<Cancion>cancions){
         Scanner scanner=new Scanner(System.in);
         boolean continuar=true;
@@ -126,6 +138,11 @@ public class MainCanciones {
                     break;
                 case 7:
                     printListAlbum(albumes);
+                    break;
+                case 8:
+                    addInOrder(canciones);
+                    break;
+
             }
         }
     }
@@ -138,6 +155,7 @@ public class MainCanciones {
         System.out.println("5-Volver a imprimir el menu");
         System.out.println("6-Eliminar la cancion del album");
         System.out.println("7-Imprimir Album con las canciones");
+        System.out.println("8-Ordenar Canciones");
     }
 
 }

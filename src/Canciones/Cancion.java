@@ -1,6 +1,6 @@
 package Canciones;
 
-public class Cancion {
+public class Cancion implements Comparable<Cancion> {
     protected String titulo;
     protected double duracion;
 
@@ -19,5 +19,11 @@ public class Cancion {
                 "duracion " + duracion;
 
     }
+    @Override
+    public int compareTo(Cancion c1){
+        return this.titulo.compareTo(c1.getTitulo());
+
+    }
+
 
 }
