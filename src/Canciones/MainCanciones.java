@@ -5,8 +5,6 @@ import java.util.*;
 public class MainCanciones {
     private static LinkedList<Cancion>canciones=new LinkedList<>();
     public static ArrayList<Album>albumes=new ArrayList<>();
-
-
     public static void main(String[] args) {
        Album album1=new Album("Skillet","John Cooper");
        Album album2=new Album("Evanescence","Amy Lee");
