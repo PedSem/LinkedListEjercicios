@@ -49,11 +49,6 @@ public class MainCanciones {
         for(Cancion cancion:linkedListOrdenado){
             System.out.println(cancion);
         }
-
-
-
-
-
     }
     public static void play(LinkedList<Cancion>cancions){
         Scanner scanner=new Scanner(System.in);
