@@ -41,7 +41,7 @@ public class MainCanciones {
         do{
             try{
                 System.out.println("Introduce el titulo de la cancion");
-                nombrealbum=scanner.next();
+                nombrealbum=scanner.nextLine();
                 boolean esvalido=true;
                 for(int i=0;i<nombrealbum.length();i++){
                     if(!Character.isLetter(nombrealbum.charAt(i))){
@@ -58,23 +58,17 @@ public class MainCanciones {
                 System.out.println("Error.Solo se permiten caracteres");
             }
         }while (!continuar);
-        continuar=false;
         boolean afirmar=false;
-        do{
+
             for (int i=0;i<albumes.size();i++) {
                 if (albumes.get(i).nombre.equalsIgnoreCase(nombrealbum)) {
                     System.out.println(albumes.get(i).nombre + " " + albumes.get(i).artista + " " + albumes.get(i).canciones);
                     afirmar = true;
-                }else{
-                    afirmar=false;
                 }
             }
-            if(afirmar){
-               continuar=true;
-            }else{
-                System.out.println("Mal");
+            if(!afirmar){
+                System.out.println("Album no encontrado");
             }
-        }while (!continuar);
 
 
 
@@ -102,10 +96,12 @@ public class MainCanciones {
         boolean haciaAdelante=true;
         int opcion=0;
         while ((opcion>=0 && opcion<9) || continuar){
-
+            boolean entradavalida=false;
+            while (!entradavalida){
                 try{
                     opcion= scanner.nextInt();
                     scanner.nextLine();
+                    entradavalida=true;
                     if(opcion>=0 && opcion<9){
                         continuar=false;
                     }else{
@@ -116,6 +112,7 @@ public class MainCanciones {
                     scanner.nextLine();
                     continuar=true;
                 }
+            }
                 switch (opcion){
                     case 0:
                         System.out.println("Se acabaron las canciones");
@@ -182,7 +179,11 @@ public class MainCanciones {
                         }
                         break;
                     case 7:
-                        printListAlbum(albumes);
+                        if(!albumes.isEmpty()){
+                            printListAlbum(albumes);
+                        }else{
+                            System.out.println("No hay albumes en la lista");
+                        }
                         break;
                     case 8:
                         addInOrder(canciones);
