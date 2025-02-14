@@ -5,6 +5,7 @@ import java.util.*;
 public class MainCanciones {
     private static LinkedList<Cancion>canciones=new LinkedList<>();
     public static ArrayList<Album>albumes=new ArrayList<>();
+    public static Scanner scanner=new Scanner(System.in);
     public static void main(String[] args) {
        Album album1=new Album("Skillet","John Cooper");
        Album album2=new Album("Evanescence","Amy Lee");
@@ -12,7 +13,6 @@ public class MainCanciones {
        album1.addSong("Hero",3);
        album1.addSong("Salvation",3);
        albumes.add(album1);
-
        album2.addSong("Bring me to life",4);
        album2.addSong("Going Under",4);
        album2.addSong("My Immortal",4);
@@ -36,9 +36,47 @@ public class MainCanciones {
 
     }
     public static void printListAlbum(ArrayList<Album>albumes){
-        for(Album album:albumes){
-            System.out.println(album);
-        }
+        boolean continuar=false;
+        String nombrealbum="";
+        do{
+            try{
+                System.out.println("Introduce el titulo de la cancion");
+                nombrealbum=scanner.next();
+                boolean esvalido=true;
+                for(int i=0;i<nombrealbum.length();i++){
+                    if(!Character.isLetter(nombrealbum.charAt(i))){
+                        esvalido=false;
+                    }
+                }
+                if(esvalido){
+                    continuar=true;
+                }else{
+                    System.out.println("Error.Solo se permiten caracteres");
+                }
+
+            }catch (InputMismatchException e){
+                System.out.println("Error.Solo se permiten caracteres");
+            }
+        }while (!continuar);
+        continuar=false;
+        boolean afirmar=false;
+        do{
+            for (int i=0;i<albumes.size();i++) {
+                if (albumes.get(i).nombre.equalsIgnoreCase(nombrealbum)) {
+                    System.out.println(albumes.get(i).nombre + " " + albumes.get(i).artista + " " + albumes.get(i).canciones);
+                    afirmar = true;
+                }else{
+                    afirmar=false;
+                }
+            }
+            if(afirmar){
+               continuar=true;
+            }else{
+                System.out.println("Mal");
+            }
+        }while (!continuar);
+
+
 
     }
     public static void addInOrder(LinkedList<Cancion>canciones){
@@ -62,81 +100,95 @@ public class MainCanciones {
 
         }
         boolean haciaAdelante=true;
-        while (continuar){
-                int opcion= scanner.nextInt();
-                scanner.nextLine();
-            switch (opcion){
-                case 0:
-                    System.out.println("Se acabaron las canciones");
-                    continuar=false;
-                    break;
-                case 1:
-                    if(!haciaAdelante){
-                        if(cancionListIterator.hasNext())
-                            cancionListIterator.next();
-                        haciaAdelante=true;
+        int opcion=0;
+        while ((opcion>=0 && opcion<9) || continuar){
 
-
-                    }
-                    if(cancionListIterator.hasNext()){
-                        System.out.println("Cancion " + cancionListIterator.next());
-
+                try{
+                    opcion= scanner.nextInt();
+                    scanner.nextLine();
+                    if(opcion>=0 && opcion<9){
+                        continuar=false;
                     }else{
-                        System.out.println("No hay mas canciones");
-                        haciaAdelante=false;
+                        System.out.println("Introduce una opcion valida");
                     }
-                    break;
-                case 2:
-                    if(haciaAdelante){
-                        if(cancionListIterator.hasPrevious())
-                            cancionListIterator.previous();
-                        haciaAdelante=false;
-                    }
-                    if(cancionListIterator.hasPrevious()){
-                        System.out.println("Cancion " + cancionListIterator.previous());
-                    }else{
-                        System.out.println("Primer cancion");
-                        haciaAdelante=true;
-                    }
-                    break;
-                case 3:
-                    if(haciaAdelante && cancionListIterator.hasPrevious()){
-                        System.out.println("Reproduciendo " + cancionListIterator.previous());
-                        haciaAdelante=false;
-                    }else if(!haciaAdelante && cancionListIterator.hasNext()){
-                        System.out.println("Reproduciendo " + cancionListIterator.next());
-                        haciaAdelante=true;
-                    }
-                    break;
-                case 4:
-                    printList(canciones);
-                    break;
-                case 5:
-                    imprimirmenu();
-                    break;
-                case 6:
-                    if(cancionListIterator.hasNext() || cancionListIterator.hasPrevious()){
-                        cancionListIterator.remove();
+                }catch (InputMismatchException e){
+                    System.out.println("Error.Solo se permite numeros");
+                    scanner.nextLine();
+                    continuar=true;
+                }
+                switch (opcion){
+                    case 0:
+                        System.out.println("Se acabaron las canciones");
+                        continuar=false;
+                        break;
+                    case 1:
+                        if(!haciaAdelante){
+                            if(cancionListIterator.hasNext())
+                                cancionListIterator.next();
+                            haciaAdelante=true;
+
+
+                        }
                         if(cancionListIterator.hasNext()){
-                            System.out.println("Reproduciendo " + cancionListIterator.next());
-
-                        }else if(cancionListIterator.hasPrevious()){
-                            System.out.println("Reproduciendo " + cancionListIterator.previous());
-
+                            System.out.println("Cancion " + cancionListIterator.next());
 
                         }else{
-                            System.out.println("El album esta vacio");
+                            System.out.println("No hay mas canciones");
+                            haciaAdelante=false;
                         }
-                    }
-                    break;
-                case 7:
-                    printListAlbum(albumes);
-                    break;
-                case 8:
-                    addInOrder(canciones);
-                    break;
 
-            }
+                        break;
+                    case 2:
+                        if(haciaAdelante){
+                            if(cancionListIterator.hasPrevious())
+                                cancionListIterator.previous();
+                            haciaAdelante=false;
+                        }
+                        if(cancionListIterator.hasPrevious()){
+                            System.out.println("Cancion " + cancionListIterator.previous());
+                        }else{
+                            System.out.println("Primer cancion");
+                            haciaAdelante=true;
+                        }
+                        break;
+                    case 3:
+                        if(haciaAdelante && cancionListIterator.hasPrevious()){
+                            System.out.println("Reproduciendo " + cancionListIterator.previous());
+                            haciaAdelante=false;
+                        }else if(!haciaAdelante && cancionListIterator.hasNext()){
+                            System.out.println("Reproduciendo " + cancionListIterator.next());
+                            haciaAdelante=true;
+                        }
+                        break;
+                    case 4:
+                        printList(canciones);
+                        break;
+                    case 5:
+                        imprimirmenu();
+                        break;
+                    case 6:
+                        if(cancionListIterator.hasNext() || cancionListIterator.hasPrevious()){
+                            cancionListIterator.remove();
+                            if(cancionListIterator.hasNext()){
+                                System.out.println("Reproduciendo " + cancionListIterator.next());
+
+                            }else if(cancionListIterator.hasPrevious()){
+                                System.out.println("Reproduciendo " + cancionListIterator.previous());
+
+
+                            }else{
+                                System.out.println("El album esta vacio");
+                            }
+                        }
+                        break;
+                    case 7:
+                        printListAlbum(albumes);
+                        break;
+                    case 8:
+                        addInOrder(canciones);
+                        break;
+
+                }
         }
     }
     public static void imprimirmenu(){

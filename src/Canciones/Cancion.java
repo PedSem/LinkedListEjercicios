@@ -15,7 +15,7 @@ public class Cancion implements Comparable<Cancion> {
 
     @Override
     public String toString() {
-        return "\ntitulo:'" + titulo + '\'' +
+        return "titulo:'" + titulo + '\'' +
                 "duracion " + duracion;
 
     }
