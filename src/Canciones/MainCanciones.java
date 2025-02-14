@@ -62,7 +62,13 @@ public class MainCanciones {
 
             for (int i=0;i<albumes.size();i++) {
                 if (albumes.get(i).nombre.equalsIgnoreCase(nombrealbum)) {
-                    System.out.println(albumes.get(i).nombre + " " + albumes.get(i).artista + " " + albumes.get(i).canciones);
+                    System.out.println(albumes.get(i).nombre + " " + albumes.get(i).artista);
+                    System.out.println("Canciones");
+                    for(int j=0;j<albumes.get(i).canciones.size();j++){
+                        Cancion cancion=albumes.get(i).canciones.get(j);
+                        System.out.println(cancion);
+
+                    }
                     afirmar = true;
                 }
             }
@@ -94,23 +100,21 @@ public class MainCanciones {
 
         }
         boolean haciaAdelante=true;
-        int opcion=0;
-        while ((opcion>=0 && opcion<9) || continuar){
+        while (continuar){
             boolean entradavalida=false;
+            int opcion=0;
             while (!entradavalida){
                 try{
                     opcion= scanner.nextInt();
                     scanner.nextLine();
                     entradavalida=true;
-                    if(opcion>=0 && opcion<9){
-                        continuar=false;
-                    }else{
+                    if(opcion<0 ||opcion>8){
                         System.out.println("Introduce una opcion valida");
+                        entradavalida=false;
                     }
                 }catch (InputMismatchException e){
                     System.out.println("Error.Solo se permite numeros");
                     scanner.nextLine();
-                    continuar=true;
                 }
             }
                 switch (opcion){
