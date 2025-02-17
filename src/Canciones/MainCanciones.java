@@ -60,18 +60,17 @@ public class MainCanciones {
         }while (!continuar);
         boolean afirmar=false;
 
-            for (int i=0;i<albumes.size();i++) {
-                if (albumes.get(i).nombre.equalsIgnoreCase(nombrealbum)) {
-                    System.out.println(albumes.get(i).nombre + " " + albumes.get(i).artista);
-                    System.out.println("Canciones");
-                    for(int j=0;j<albumes.get(i).canciones.size();j++){
-                        Cancion cancion=albumes.get(i).canciones.get(j);
-                        System.out.println(cancion);
+        for (Album album : albumes) {
+            if (album.nombre.equalsIgnoreCase(nombrealbum)) {
+                System.out.println(album.nombre + " " + album.artista);
+                System.out.println("Canciones");
+                for (Cancion cancion:album.canciones) {
+                    System.out.println(cancion);
 
-                    }
-                    afirmar = true;
                 }
+                afirmar = true;
             }
+        }
             if(!afirmar){
                 System.out.println("Album no encontrado");
             }
