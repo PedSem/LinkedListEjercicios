@@ -36,44 +36,35 @@ public class MainCanciones {
 
     }
     public static void printListAlbum(ArrayList<Album>albumes){
-        boolean continuar=false;
+        boolean continuar=true;
         String nombrealbum="";
         do{
             try{
                 System.out.println("Introduce el titulo de la cancion");
                 nombrealbum=scanner.nextLine();
-                boolean esvalido=true;
-                for(int i=0;i<nombrealbum.length();i++){
-                    if(!Character.isLetter(nombrealbum.charAt(i))){
-                        esvalido=false;
-                    }
-                }
-                if(esvalido){
-                    continuar=true;
-                }else{
-                    System.out.println("Error.Solo se permiten caracteres");
-                }
-
-            }catch (InputMismatchException e){
+                Integer.parseInt(nombrealbum);
                 System.out.println("Error.Solo se permiten caracteres");
-            }
-        }while (!continuar);
-        boolean afirmar=false;
 
+            }catch (NumberFormatException e){
+                continuar=false;
+            }
+        }while (continuar);
+        continuar=true;
         for (Album album : albumes) {
             if (album.nombre.equalsIgnoreCase(nombrealbum)) {
                 System.out.println(album.nombre + " " + album.artista);
                 System.out.println("Canciones");
                 for (Cancion cancion:album.canciones) {
                     System.out.println(cancion);
+                    continuar=false;
 
                 }
-                afirmar = true;
             }
         }
-            if(!afirmar){
-                System.out.println("Album no encontrado");
-            }
+        if(continuar){
+            System.out.println("Album no encontrado");
+        }
+
 
 
 
