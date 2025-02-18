@@ -46,7 +46,6 @@ public class Album {
         if(cancion!=null){
                 cancions.add(cancion);
                 return true;
-
         }else{
             return false;
         }
